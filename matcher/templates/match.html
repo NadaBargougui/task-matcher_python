@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+  <title>Task Matcher</title>
+  {% load static %}
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-image: url("{% static 'background/image.png' %}");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+      color: #070303;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background: rgba(175, 189, 201, 0.6);
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(41, 71, 93, 0.3);
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+    }
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 1.8em;
+  margin-top: 20px;
+}
+
+p {
+  font-size: 1.2em;
+  color: #000000;
+  font-weight: bold;
+}
+
+    button {
+      background-color: #c16ba3;
+      border: none;
+      padding: 12px 25px;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #c16ba3;
+    }
+
+    form p {
+      text-align: left;
+      margin-bottom: 15px;
+    }
+
+    form input, form select, form textarea {
+      width: 100%;
+      padding: 8px 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: none;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Match Task to Employee</h2>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Find Best Match</button>
+    </form>
+
+{% if best_match %}
+  <h3>Best Match: {{ best_match }}</h3>
+  {% if match_score is not None %}
+    <p>Score: {{ match_score }}%</p>
+  {% endif %}
+{% endif %}
+
+
+
+  </div>
+</body>
+</html>
