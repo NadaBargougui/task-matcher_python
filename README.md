@@ -2,6 +2,8 @@
 
 Task Matcher is a Django web application that matches tasks to employees based on skill extraction from PDF resumes. It uses natural language processing (NLP) to extract skills from resumes and task descriptions, then calculates match scores to recommend the best fit.
 
+![Alt text](matcher/static/background/demo.png)
+
 ---
 
 ## Features
